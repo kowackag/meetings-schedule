@@ -1,4 +1,5 @@
 import React from 'react';
+import {useSelector, useDispatch} from 'react-redux';
 
 class CalendarForm extends React.Component {
     state = {
@@ -148,6 +149,10 @@ class CalendarForm extends React.Component {
 
         if(typeof saveMeeting === 'function') {
             saveMeeting( this.getFieldsData() );
+            // dispatch({
+            //     type: 'save',
+            //     payload: this.getFieldsData() 
+            // })  
         }
     }
 

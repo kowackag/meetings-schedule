@@ -7,6 +7,14 @@
       "email": "jan@kowalski.not",
       "date": "2022-01-01",
       "time": "10:00"
+    },
+    {
+      "firstName": "Małgorzata",
+      "lastName": "Kowacka",
+      "email": "kowackag@gmail.com",
+      "date": "2999-05-34",
+      "time": "12:20",
+      "id": 2
     }
   ]
 }

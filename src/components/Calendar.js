@@ -66,7 +66,7 @@ class Calendar extends React.Component {
     render() {
         return (
             <section>
-                <CalendarList meetings={ this.state.meetings } />
+                <CalendarList/>
                 <CalendarForm saveMeeting={ this.sendMeetingToApi }/>
             </section>
         )
