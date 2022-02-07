@@ -1,7 +1,23 @@
+const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-module.exports = {
-  module: {
+
+module.exports = function(env={}) {
+    const {production: isProd = false} = env;
+    return {
+        entry: ['whatwg-fetch', './src/index.js'],
+        // definiuje plik wejściowy
+        mode: isProd ? 'production' : 'development',
+        // definiuje tryb pracy webpack-a
+        devtool: isProd ? 
+            'none' : 'eval-cheap-module-source-map',
+        // definiuje identyfikację kodu źródłowego
+        output: {
+            path: path.resolve(__dirname, 'build'),
+            // definiuje ścieżką wyjściową
+            filename: 'index.[hash].js',
+            // definiuję nazwę pliku wyjściowego
+    },
+    module: {
         rules: [
         {
             test: /\.js$/,
@@ -11,31 +27,23 @@ module.exports = {
             }
         },
         {
-            test: /\.html$/,
-            use: [
-                {
-                    loader: 'html-loader'
-                }
-            ]
-        },
-        {
             test: /\.css$/,
-        //     // określam jakie pliki 
-        //     // będą brane pod uwagę
+                //     // określam jakie pliki 
+                //     // będą brane pod uwagę
             exclude: /node_modules/,
-        //     // określam wykluczenia
+                //     // określam wykluczenia
             use: [
                 isProd ? CssWebpackPlugin.loader : 'style-loader',  
-            {
-                loader: 'css-loader',
-                options: {
-                    sourceMap: isProd ? false : true,
-                    // ustawiam identyfikację kodu źródłowego
+                {
+                    loader: 'css-loader',
+                    options: {
+                        sourceMap: isProd ? false : true,
+                            // ustawiam identyfikację kodu źródłowego
+                        },
                 },
-            },
-        ]
-        //     // określam jaki [loader]
-        //     // ma być wykorzystany
+            ]
+                //     // określam jaki [loader]
+                //     // ma być wykorzystany
         },
         {
             test: /\.scss$/,
@@ -62,7 +70,7 @@ module.exports = {
                         }
                     }
                 }
-            ]
+                ]
             // określam jaki [loader]
             // ma być wykorzystany
         },
@@ -87,4 +95,6 @@ module.exports = {
         filename: './index.html'
     })
   ]
-};
+}
+
+}

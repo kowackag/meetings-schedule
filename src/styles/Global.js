@@ -1,6 +1,7 @@
 import {createGlobalStyle} from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
+    --color-font: ${props=>props.theme.colorFont};
     @font-face {
         font-family: "Roboto";
         font-style: regular;
@@ -28,8 +29,9 @@ const GlobalStyle = createGlobalStyle`
         font-size: 10px;
     }
     body {
-        font-family: Roboto, Verdana, sans-serif;
+        font-family: "Roboto", Verdana, sans-serif;
         font-size: 1.6rem;
+        color: rgb(var(--color-font))
         line-height:1.5;
     }
 `

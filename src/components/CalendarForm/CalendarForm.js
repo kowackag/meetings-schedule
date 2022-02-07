@@ -1,7 +1,9 @@
 import React from 'react';
 import StyledCalendarForm from './CalendarForm.styled';
 import Label from './../Label/Label';
+import Input from './../Input/Input'
 import {useState} from 'react';
+import validateForm from '../validateForm';
 
 const CalendarForm = (props) => {
       const initState = {
@@ -17,68 +19,15 @@ const CalendarForm = (props) => {
     const handleSubmit = e => {
         e.preventDefault();
 
-        const errors = validateForm();
-        this.setState({
-            errors,
+        const errors = validateForm(state);
+        setState({...state,
+            errors
         });
 
         if(errors.length === 0) {
-            this.saveMeeting();
-            this.clearFormFields();
+            saveMeeting();
+            clearFormFields();
         }
-    }
-
-    const validateForm = () => {
-        const errors = [];
-
-        if(!isDateCorrect()) {
-            errors.push('Popraw wprowadzoną datę');
-        }
-
-        if(!isTimeCorrect()) {
-            errors.push('Popraw wprowadzoną godiznę')
-        }
-
-        if(!isFirstNameCorrect()) {
-            errors.push('Wprowadź imię');
-        }
-
-        if(!isLastNameCorrect()) {
-            errors.push('Wprowadż nazwisko')
-        }
-
-        if(!isEmailCorrect()) {
-            errors.push('Wprowadź poprawny adres email');
-        }
-
-
-        return errors;
-    }
-
-    const isDateCorrect = () =>{
-        const pattern = /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/;
-
-        return pattern.test(state.date);
-    }
-
-    const isTimeCorrect = () => {
-        const pattern = /^[0-9]{2}:[0-9]{2}$/
-        
-        return pattern.test(this.state.time);
-    }
-
-    const isFirstNameCorrect = () => {
-        return state.firstName.length > 0;
-    }
-
-    const isLastNameCorrect = () => {
-        return state.lastName.length > 0;
-    }
-
-    const isEmailCorrect = () => {
-        const pattern = /^[0-9a-zA-Z_.-]+@[0-9a-zA-Z.-]+\.[a-zA-Z]{2,3}$/;
-
-        return pattern.test(this.state.email);
     }
 
     const getFieldsData = () => {
@@ -95,8 +44,9 @@ const CalendarForm = (props) => {
     }
 
     const handleFieldChange = e => {
+        e.preventDefault();
         if(isFieldNameCorrect(e.target.name)) {
-            this.setState({
+            setState({...state,
                 [e.target.name]: e.target.value,
             });
         }
@@ -119,63 +69,34 @@ const CalendarForm = (props) => {
     }
 
     const renderErrors = () => {
-        return state.errors.map( (err, index) => <li key={ index }>{ err }</li>);
+        if (state.errors) {
+            return state.errors.map( (err, index) => <li key={ index }>{ err }</li>);
+        }
+        
     }
+    
+    const fields = [
+        {name:'date', value:state.date, onChange: handleFieldChange, placeholder:'RRRR-MM-DD', desc: 'Data:' },
+        {name:'time', value:state.time, onChange: handleFieldChange, placeholder:'HH:MM', desc: 'Godzina:' },
+        {name:'firstName', value: state.firstName, onChange: handleFieldChange, placeholder:'RRRR-MM-DD', desc: 'Imię:' },
+        {name:'lastName', value: state.lastName, onChange: handleFieldChange, placeholder:'RRRR-MM-DD', desc: 'Nazwisko:' },
+        {name:'email', value: state.email, onChange: handleFieldChange, placeholder:'nazwa@poczty.pl', desc: 'Email:' }
+    ]
 
     return (
         <StyledCalendarForm action="" onSubmit={ handleSubmit }>
-            <ul>{ renderErrors() }</ul>
-            <div>
-                <Label>
-                        Data: <input 
-                            name="date" 
-                            onChange={ handleFieldChange } 
-                            value={ state.date } 
-                            placeholder="RRRR-MM-DD"
-                        />
-                    </Label>
-                </div>
-                <div>
-                    <label>
-                        Godzina: <input 
-                            name="time" 
-                            onChange={ handleFieldChange } 
-                            value={ state.time } 
-                            placeholder="HH:MM"
-                        />
-                    </label>
-                </div>
-
-                <div>
-                    <label>
-                        Imię: <input 
-                            name="firstName" 
-                            onChange={ handleFieldChange } 
-                            value={ state.firstName } 
-                        />
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        Nazwisko: <input 
-                            name="lastName" 
-                            onChange={ handleFieldChange } 
-                            value={ state.lastName } 
-                        />
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        Email: <input 
-                            name="email" 
-                            onChange={ handleFieldChange } 
-                            value={ state.email } 
-                            placeholder="nazwa@poczty.pl"
-                        />
-                    </label>
-                </div>
-                <div><input type="submit" value="zapisz" /></div>
-            </StyledCalendarForm>
+            <ul>{ renderErrors()}</ul>
+            {fields.map(({name, value, onChange, placeholder, desc}) => <div key ={name}>
+                <Label>{desc} <Input 
+                            className= "form__value"
+                            name={name} 
+                            onChange={onChange} 
+                            value={ value} 
+                            placeholder={placeholder}/>
+                </Label>
+            </div>)}
+            <div><input type="submit" value="zapisz" /></div>
+        </StyledCalendarForm>
         )
 
     

@@ -5,7 +5,7 @@ import {Provider} from 'react-redux'
 import App from './App';
 import meetingReducer from './reducers';
 import {ThemeProvider} from 'styled-components';
-import theme from './styles/theme';
+import themeSettings from './../src/styles/theme';
 import ResetStyle from './styles/Reset';
 import GlobalStyle from './styles/Global';
 
@@ -15,7 +15,7 @@ const store = createStore(meetingReducer,
 
 ReactDOM.render(
     <Provider store={store}>
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={themeSettings}>
             <ResetStyle/>
             <GlobalStyle/>
             <App />

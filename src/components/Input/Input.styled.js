@@ -5,19 +5,15 @@ const DefaultStyledInput = styled.div`
     --color-beta: ${props=>props.theme.colorShadowDark};
     --color-gamma: ${props=>props.theme.colorShadowLight};
     --color-font: ${props=>props.theme.colorFont};
+    
     display: flex;
     border-radius: .8rem;
     box-shadow: inset 4px 4px 6px rgb(var(--color-beta)), inset -4px -4px 6px rgb(var(--color-gamma));
     background-color: rgb(var(--color-alfa));
     font-size: 1.2rem;
+    color:rgb(var(--color-font));
 
-    & .form__unit {
-        display:inline-block;
-        padding: 1rem 1rem;  
-        color: rgba(var(--color-font), .8)
-    } 
-
-    & .form__value {
+    .form__value {
         display:inline-block;
         padding: 1rem 1rem;
         width: 90%;

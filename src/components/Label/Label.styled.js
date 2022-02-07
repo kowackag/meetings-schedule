@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 
 const DefaultStyledLabel = styled.label`
     --color-font: ${props=>props.theme.colorFont};
