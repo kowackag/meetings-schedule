@@ -27,18 +27,4 @@ class CalendarList extends React.Component {
     }
 }
 
-// const mapStateToProps = (state, props) => {
-//     return {
-//         meetings: state.meetings,
-//     }
-// }
-
-// const mapActionToProps = {
-//     onLoad: loadMeetingsAction,
-//     onSave: saveMeetingsAction
-// }
-
-// export default connect(mapStateToProps, mapActionToProps)(CalendarList);
-
-
 export default CalendarList

@@ -1,25 +1,25 @@
 import {v4 as uuid} from 'uuid'
 
-export const loadMeetingsAction = payload => {
-    console.log(payload)
+const loadMeetingsAction = payload => {
     return {
         type: 'loadMeet',
         payload,
     }
 }
 
-export const saveMeetingsAction = payload => {
+const saveMeetingsAction = payload => {
     return {
         type: 'saveMeet',
         payload
     }
 }
 
-export const removeMeetingsAction = payload => {
-    return {
-        type: 'removeMeet',
-        payload: {
-            payload
-        },
-    }
-}
+export {saveMeetingsAction, loadMeetingsAction}
+// export const removeMeetingsAction = payload => {
+//     return {
+//         type: 'removeMeet',
+//         payload: {
+//             payload
+//         },
+//     }
+// }

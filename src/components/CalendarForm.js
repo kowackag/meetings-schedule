@@ -146,10 +146,10 @@ class CalendarForm extends React.Component {
     }
 
     saveMeeting() {
-        
-
-        if(typeof this.props.onSave === 'function') {
-            this.props.onSave( this.getFieldsData() );
+        const {saveMeetings} = this.props;
+        console.log(this.props)
+        if(typeof saveMeetings === 'function') {
+            saveMeetings( this.getFieldsData() );
         }
     }
 
@@ -180,20 +180,20 @@ class CalendarForm extends React.Component {
     }
 }
 
-const mapStateToProps = (state, props) => {
-    return {
-        meetings: state.meetings,
-    }
-}
+// const mapStateToProps = (state, props) => {
+//     return {
+//         meetings: state.meetings,
+//     }
+// }
 
-const mapActionToProps = {
-    onLoad: loadMeetingsAction,
-    onSave: saveMeetingsAction
-}
+// const mapActionToProps = {
+//     onLoad: loadMeetingsAction,
+//     onSave: saveMeetingsAction
+// }
 
-export default connect(mapStateToProps, mapActionToProps)(CalendarForm);
-
-
+// export default connect(mapStateToProps, mapActionToProps)(CalendarForm);
 
 
-// export default 
+
+
+export default CalendarForm;

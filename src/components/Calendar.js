@@ -3,66 +3,40 @@ import {connect} from 'react-redux';
 import {loadMeetingsAction, saveMeetingsAction} from './../actions/calendar'
 import CalendarList from './CalendarList'
 import CalendarForm from './CalendarForm';
+import CalendarApi from './../providers/CalendarAPI';
+
+const meetings =  new CalendarApi();
 
 class Calendar extends React.Component {
     apiUrl = 'http://localhost:3005/meetings';
-
     
-    loadMeetingsFromApi() {
-        fetch(this.apiUrl)
+    sendMeetingToApi = (meetingData) => {
+        meetings.sendMeetingToApi(meetingData)
+            .then(resp=>this.addMeetingToState(resp))
+            .catch(err => {
+                console.error(err);
+            });
+    }
+
+    addMeetingToState(meetingData) {
+        this.props.onSave(meetingData);
+    }
+
+    componentDidMount() {
+        meetings.loadMeetingsFromApi()
             .then(resp => {
-                if(resp.ok) {
-                    return resp.json()
-                }
-                
-                throw new Error('Network error!');
-            })
-            .then(resp => {console.log(resp);
                 this.props.onLoad(resp);
             })
             .catch(err => {
                 console.error(err);
             });
     }
-
-    sendMeetingToApi = (meetingData) => {
-        fetch(this.apiUrl, {
-            method: 'POST',
-            body: JSON.stringify(meetingData),
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        })
-            .then(resp => {
-                if(resp.ok) {
-                    return resp.json()
-                }
-                
-                throw new Error('Network error!');
-            })
-            .then(meetingData => {
-                this.addMeetingToState(meetingData);
-            })
-            .catch(err => {
-                console.log(err);
-            });
-    }
-
-    addMeetingToState(meetingData) {
-        this.props.onSave();
-    }
-
-    componentDidMount() {
-        this.loadMeetingsFromApi();
-    }
-
-
+    
     render() {
-
         return (
             <section>
                 <CalendarList meetings={this.props.meetings}/>
-                <CalendarForm/>
+                <CalendarForm saveMeetings={this.sendMeetingToApi} />
             </section>
         )
     }
@@ -75,9 +49,8 @@ const mapStateToProps = (state, props) => {
 }
 
 const mapActionToProps = {
+    onSave: saveMeetingsAction,
     onLoad: loadMeetingsAction,
-    onSave: saveMeetingsAction
 }
 
 export default connect(mapStateToProps, mapActionToProps)(Calendar);
-
