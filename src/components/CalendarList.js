@@ -1,4 +1,6 @@
 import React from 'react';
+import {loadMeetingsAction, saveMeetingsAction} from './../actions/calendar';
+import {connect} from 'react-redux';
 
 class CalendarList extends React.Component {   
     render() {
@@ -6,7 +8,9 @@ class CalendarList extends React.Component {
     }
 
     renderMeetingsList() {
-        return this.props.meetings.map(item => 
+        const {meetings} =  this.props;
+        console.log(meetings);
+        return meetings.map(item => 
             this.renderMeetingsItem(item)
         );
     }
@@ -23,4 +27,18 @@ class CalendarList extends React.Component {
     }
 }
 
-export default CalendarList
+const mapStateToProps = (state, props) => {
+    return {
+        meetings: state.meetings,
+    }
+}
+
+const mapActionToProps = {
+    onLoad: loadMeetingsAction,
+    onSave: saveMeetingsAction
+}
+
+export default connect(mapStateToProps, mapActionToProps)(CalendarList);
+
+
+// export default CalendarList

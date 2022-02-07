@@ -9,15 +9,4 @@ class App extends React.Component {
     }
 }
 
-const mapStateToProps = (state, props) => {
-    return {
-        meetings: state.meetings,
-    }
-}
-
-const mapActionToProps = {
-    onLoad: loadMeetingsAction,
-    onSubmit: saveMeetingsAction
-}
-
-export default connect(mapStateToProps, mapActionToProps)(App);
+export default App;

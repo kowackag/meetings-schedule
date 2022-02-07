@@ -1,15 +1,13 @@
 import React from 'react';
-
+import {connect} from 'react-redux';
+import {loadMeetingsAction, saveMeetingsAction} from './../actions/calendar'
 import CalendarList from './CalendarList'
 import CalendarForm from './CalendarForm';
 
 class Calendar extends React.Component {
     apiUrl = 'http://localhost:3005/meetings';
 
-    state = {
-        meetings: [],
-    }
-
+    
     loadMeetingsFromApi() {
         fetch(this.apiUrl)
             .then(resp => {
@@ -19,10 +17,8 @@ class Calendar extends React.Component {
                 
                 throw new Error('Network error!');
             })
-            .then(resp => {
-                this.setState({
-                    meetings: resp,
-                })
+            .then(resp => {console.log(resp);
+                this.props.onLoad(resp);
             })
             .catch(err => {
                 console.error(err);
@@ -53,9 +49,7 @@ class Calendar extends React.Component {
     }
 
     addMeetingToState(meetingData) {
-        this.setState({
-            meetings: [...this.state.meetings, meetingData],
-        })
+        this.props.onSave();
     }
 
     componentDidMount() {
@@ -64,13 +58,26 @@ class Calendar extends React.Component {
 
 
     render() {
+
         return (
             <section>
                 <CalendarList/>
-                <CalendarForm saveMeeting={ this.sendMeetingToApi }/>
+                {/* <CalendarForm saveMeeting={ this.sendMeetingToApi }/> */}
             </section>
         )
     }
 }
 
-export default Calendar;
+const mapStateToProps = (state, props) => {
+    return {
+        meetings: state.meetings,
+    }
+}
+
+const mapActionToProps = {
+    onLoad: loadMeetingsAction,
+    onSave: saveMeetingsAction
+}
+
+export default connect(mapStateToProps, mapActionToProps)(Calendar);
+

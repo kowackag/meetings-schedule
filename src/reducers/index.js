@@ -2,21 +2,15 @@ const initState = {
     meetings: [],
 }
 
-// const initState = {
-//     firstName: '',
-//     lastName: '',
-//     email: '',
-//     date: '',
-//     time: '',
-//     errors: [],
-// }
-
 const meetingReducer = ((state = initState, action) => {
     switch (action.type) {
-        case 'load':
-            return {}
-        case 'add':
+        case 'loadMeet':
+            return {...state, meetings: action.payload}
+        case 'saveMeet':
             return {...state, meetings: [...state.meetings, action.payload]};
+        case 'removeMeet':
+            return {...state, 
+                meetings: state.meetings.filter(item=> item.id !== action.payload.id)};
         default:
             return state;
     }
