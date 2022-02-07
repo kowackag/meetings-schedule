@@ -1,5 +1,6 @@
 import React from 'react';
-import {useSelector, useDispatch} from 'react'
+import {loadMeetingsAction, saveMeetingsAction} from './../actions/calendar';
+import {connect} from 'react-redux';
 
 class CalendarForm extends React.Component {
     state = {
@@ -145,10 +146,10 @@ class CalendarForm extends React.Component {
     }
 
     saveMeeting() {
-        const {saveMeeting} = this.props;
+        
 
-        if(typeof saveMeeting === 'function') {
-            saveMeeting( this.getFieldsData() );
+        if(typeof this.props.onSave === 'function') {
+            this.props.onSave( this.getFieldsData() );
         }
     }
 
@@ -179,4 +180,20 @@ class CalendarForm extends React.Component {
     }
 }
 
-export default CalendarForm
+const mapStateToProps = (state, props) => {
+    return {
+        meetings: state.meetings,
+    }
+}
+
+const mapActionToProps = {
+    onLoad: loadMeetingsAction,
+    onSave: saveMeetingsAction
+}
+
+export default connect(mapStateToProps, mapActionToProps)(CalendarForm);
+
+
+
+
+// export default 

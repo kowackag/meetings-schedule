@@ -9,7 +9,6 @@ class CalendarList extends React.Component {
 
     renderMeetingsList() {
         const {meetings} =  this.props;
-        console.log(meetings);
         return meetings.map(item => 
             this.renderMeetingsItem(item)
         );
@@ -22,23 +21,24 @@ class CalendarList extends React.Component {
                 <a href={`mailto: ${itemData.email}`}>
                     {itemData.firstName} {itemData.lastName}
                 </a>
+                <button>X</button>
             </li>
         )
     }
 }
 
-const mapStateToProps = (state, props) => {
-    return {
-        meetings: state.meetings,
-    }
-}
+// const mapStateToProps = (state, props) => {
+//     return {
+//         meetings: state.meetings,
+//     }
+// }
 
-const mapActionToProps = {
-    onLoad: loadMeetingsAction,
-    onSave: saveMeetingsAction
-}
+// const mapActionToProps = {
+//     onLoad: loadMeetingsAction,
+//     onSave: saveMeetingsAction
+// }
 
-export default connect(mapStateToProps, mapActionToProps)(CalendarList);
+// export default connect(mapStateToProps, mapActionToProps)(CalendarList);
 
 
-// export default CalendarList
+export default CalendarList

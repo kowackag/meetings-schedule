@@ -11,10 +11,7 @@ export const loadMeetingsAction = payload => {
 export const saveMeetingsAction = payload => {
     return {
         type: 'saveMeet',
-        payload: {
-            id: uuid(),
-            ...payload
-        },
+        payload
     }
 }
 

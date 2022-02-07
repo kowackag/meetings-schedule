@@ -3,6 +3,7 @@ const initState = {
 }
 
 const meetingReducer = ((state = initState, action) => {
+    console.log(action.payload)
     switch (action.type) {
         case 'loadMeet':
             return {...state, meetings: action.payload}
