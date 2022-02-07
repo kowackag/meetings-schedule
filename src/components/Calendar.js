@@ -2,14 +2,13 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {loadMeetingsAction, saveMeetingsAction} from './../actions/calendar'
 import CalendarList from './CalendarList'
-import CalendarForm from './CalendarForm';
+import CalendarForm from './CalendarForm/CalendarForm';
 import CalendarApi from './../providers/CalendarAPI';
 
 const meetings =  new CalendarApi();
 
 class Calendar extends React.Component {
-    apiUrl = 'http://localhost:3005/meetings';
-    
+      
     sendMeetingToApi = (meetingData) => {
         meetings.sendMeetingToApi(meetingData)
             .then(resp=>this.addMeetingToState(resp))

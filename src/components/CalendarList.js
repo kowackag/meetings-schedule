@@ -1,6 +1,4 @@
 import React from 'react';
-import {loadMeetingsAction, saveMeetingsAction} from './../actions/calendar';
-import {connect} from 'react-redux';
 
 class CalendarList extends React.Component {   
     render() {
