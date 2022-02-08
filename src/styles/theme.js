@@ -1,8 +1,9 @@
 export default {
-    colorBody: '238, 245, 252',
-    colorBgc: '243, 248, 254',
-    colorShadowDark: '215 224 234',
-    colorShadowLight: '251, 253, 255',
-    colorFont: '25, 0, 180',
-    colorContrast:'216, 27, 110'
+    colorBody: '232, 238, 253',
+    colorBgc: '232, 238, 253',
+    colorShadowDark: '208, 208, 208',
+    colorShadowLight: '247, 247, 250',
+    colorFont: '4, 21, 98',
+    colorContrast:'218, 18, 18'
 }
+

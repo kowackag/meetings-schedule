@@ -31,7 +31,7 @@ const GlobalStyle = createGlobalStyle`
     body {
         font-family: "Roboto", Verdana, sans-serif;
         font-size: 1.6rem;
-        color: rgb(var(--color-font))
+        color: rgb(var(--color-font));
         line-height:1.5;
     }
 `

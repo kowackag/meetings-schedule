@@ -7,8 +7,7 @@ const DefaultStyledLabel = styled.label`
     margin-bottom: 0.4rem;
     font-size: 1.8rem;
     font-weight: 600;
-    color:var(--color-font);
-
+    color:rgba(var(--color-font));
 `
 const StyledLabel = styled(DefaultStyledLabel)(props=>props.style);
 

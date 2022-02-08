@@ -8,7 +8,6 @@ import CalendarApi from './../providers/CalendarAPI';
 const meetings =  new CalendarApi();
 
 class Calendar extends React.Component {
-    // apiUrl = 'http://localhost:3005/meetings';
     
     sendMeetingToApi = (meetingData) => {
         meetings.sendMeetingToApi(meetingData)

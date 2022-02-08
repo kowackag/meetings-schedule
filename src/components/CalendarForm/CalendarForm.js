@@ -1,7 +1,8 @@
 import React from 'react';
 import StyledCalendarForm from './CalendarForm.styled';
 import Label from './../Label/Label';
-import Input from './../Input/Input'
+import Input from './../Input/Input';
+import Submit from '../Submit/Submit';
 import {useState} from 'react';
 import validateForm from '../validateForm';
 
@@ -95,7 +96,7 @@ const CalendarForm = (props) => {
                             placeholder={placeholder}/>
                 </Label>
             </div>)}
-            <div><input type="submit" value="zapisz" /></div>
+            <div><Submit type="submit" value="zapisz" /></div>
         </StyledCalendarForm>
         )
 
