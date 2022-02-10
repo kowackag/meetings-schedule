@@ -12,12 +12,12 @@ const CalendarList = () => {
     return(
         <StyledCalendarList>
             <section className="calendar-planned"> 
-                <h3>Zaplanowane:</h3> 
-                <CalendarItem meetings={plannedMeetings}/>
+                <h3 className="calendar-subtitle">Zaplanowane:</h3> 
+                <ul><CalendarItem meetings={plannedMeetings}/></ul>
             </section>
-            <section> 
-                <h3>Zrealizowane:</h3>
-                <CalendarItem className="calendar-past" meetings={pastMeetings}/>
+            <section className="calendar-past"> 
+                <h3 className="calendar-subtitle">Zrealizowane:</h3>
+                <ul></ul><CalendarItem  meetings={pastMeetings}/>
             </section>
         </StyledCalendarList>)
 }

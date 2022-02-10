@@ -79,24 +79,26 @@ const CalendarForm = (props) => {
     const fields = [
         {name:'date', value:state.date, onChange: handleFieldChange, placeholder:'RRRR-MM-DD', desc: 'Data:' },
         {name:'time', value:state.time, onChange: handleFieldChange, placeholder:'HH:MM', desc: 'Godzina:' },
-        {name:'firstName', value: state.firstName, onChange: handleFieldChange, placeholder:'RRRR-MM-DD', desc: 'Imię:' },
-        {name:'lastName', value: state.lastName, onChange: handleFieldChange, placeholder:'RRRR-MM-DD', desc: 'Nazwisko:' },
+        {name:'firstName', value: state.firstName, onChange: handleFieldChange, desc: 'Imię:' },
+        {name:'lastName', value: state.lastName, onChange: handleFieldChange, desc: 'Nazwisko:' },
         {name:'email', value: state.email, onChange: handleFieldChange, placeholder:'nazwa@poczty.pl', desc: 'Email:' }
     ]
 
     return (
         <StyledCalendarForm action="" onSubmit={ handleSubmit }>
-            <ul>{ renderErrors()}</ul>
-            {fields.map(({name, value, onChange, placeholder, desc}) => <div key ={name}>
-                <Label>{desc} <Input 
-                            className= "form__value"
-                            name={name} 
-                            onChange={onChange} 
-                            value={ value} 
-                            placeholder={placeholder}/>
-                </Label>
-            </div>)}
-            <div><Submit type="submit" value="zapisz" /></div>
+            <div className="form">
+                {fields.map(({name, value, onChange, placeholder, desc}) => <div key ={name}>
+                    <Label>{desc} <Input 
+                                className= "form__value"
+                                name={name} 
+                                onChange={onChange} 
+                                value={ value} 
+                                placeholder={placeholder}/>
+                    </Label>
+                </div>)}
+                <div><Submit type="submit" value="Dodaj spotkanie" /></div>
+            </div>
+            <div className="errors"><ul>{ renderErrors()}</ul></div> 
         </StyledCalendarForm>
         )
 

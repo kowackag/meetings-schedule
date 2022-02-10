@@ -4,7 +4,7 @@
       "id": 1,
       "firstName": "Jan",
       "lastName": "Kowalski",
-      "email": "jan@kowalski.not",
+      "email": "jan@kowalski.pl",
       "date": "2022-01-01",
       "time": "10:00"
     },
@@ -17,7 +17,7 @@
       "id": 2
     },
     {
-      "firstName": "Małgorzata",
+      "firstName": "Mał",
       "lastName": "Kowacka",
       "email": "kowackag@gmail.com",
       "date": "2999-05-31",
@@ -223,6 +223,54 @@
       "date": "2022-02-10",
       "time": "16:00",
       "id": 28
+    },
+    {
+      "firstName": "Małgorzata",
+      "lastName": "Kowacka",
+      "email": "kowackamarianna@gmail.com",
+      "date": "2022-02-11",
+      "time": "11:11",
+      "id": 29
+    },
+    {
+      "firstName": "Marianna",
+      "lastName": "Kowacka",
+      "email": "mariakg@poczta.fm",
+      "date": "2022-02-11",
+      "time": "12:20",
+      "id": 30
+    },
+    {
+      "firstName": "Małgorzata",
+      "lastName": "Kowacka",
+      "email": "kowackag@gmail.com",
+      "date": "2022-02-11",
+      "time": "19:00",
+      "id": 31
+    },
+    {
+      "firstName": "Marta",
+      "lastName": "Rozpara",
+      "email": "kowackag@gmail.com",
+      "date": "2022-02-12",
+      "time": "01:01",
+      "id": 32
+    },
+    {
+      "firstName": "Marianna",
+      "lastName": "Kowacka-Gajda",
+      "email": "gosia_kow@gazeta.pl",
+      "date": "2022-02-12",
+      "time": "19:20",
+      "id": 33
+    },
+    {
+      "firstName": "Marianna",
+      "lastName": "Kowacka",
+      "email": "kowackag@gmail.com",
+      "date": "2022-02-14",
+      "time": "01:01",
+      "id": 34
     }
   ]
 }

@@ -3,7 +3,7 @@ import StyledButton from './Button.styled';
 
 const Button = (props) => {
     return( 
-        <StyledButton readOnly type ={props.type} value = {props.value} onClick={props.onClick}>{props.children}</StyledButton>
+        <StyledButton data-index = {props.index} value = {props.value} onClick={props.onClick}>{props.children}</StyledButton>
     )
 }
 

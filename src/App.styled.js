@@ -7,8 +7,8 @@ const DefaultStyledApp = styled.section`
     --color-font: ${props=>props.theme.colorFont};
     --color-contrast:${props=>props.theme.colorContrast};
   
-    margin:50px auto;
-    padding: 50px;
+    margin: 4rem auto;
+    padding: 4rem;
     max-width: 1200px;
     box-shadow:8px 8px 20px #ccd1d8, 8px 8px 20px #ccd1d8;
     background-color: rgb(var(--color-alfa));
@@ -16,6 +16,8 @@ const DefaultStyledApp = styled.section`
 
     & .Calendar__title {
         margin-bottom: 3rem;
+        width: 100%;
+        text-align: center;
         color: rgb(var(--color-contrast));
     }
 

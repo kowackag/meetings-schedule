@@ -6,10 +6,10 @@ const DefaultStyledSubmit = styled.input`
     --color-gamma: ${props=>props.theme.colorShadowLight};
     --color-font: ${props=>props.theme.colorFont};
    
-    display: inline-block;
+    display: block;
     padding: 1rem 2rem;
     min-width: 120px;
-    margin: 2rem;
+    margin: 3rem auto 0;
     border: none;
     box-shadow: 6px 6px 10px rgb(var(--color-beta)), -4px -4px 6px rgb(var(--color-gamma));
     background-color: rgb(var(--color-alfa));

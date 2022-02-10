@@ -7,12 +7,9 @@ const DefaultStyledButton = styled.button`
     --color-font: ${props=>props.theme.colorFont};
    
     display: inline-block;
-    padding: 0.5rem 1rem;
-    margin: 0 2rem;
-    border: none;
-    box-shadow: 6px 6px 10px rgb(var(--color-beta)), -4px -4px 6px rgb(var(--color-gamma));
+    padding: 0.3rem 0.6rem;
+    border: 1px solid rgba(var(--color-beta), 0.5);
     background-color: rgb(var(--color-alfa));
-    color: var(--color-font);
     font-weight: 600;
     text-align: center;
 
