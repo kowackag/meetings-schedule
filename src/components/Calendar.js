@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {loadMeetingsAction, saveMeetingsAction} from './../actions/calendar'
-import CalendarList from './CalendarList'
+import CalendarList from './../components/CalendarList/CalendarList'
 import CalendarForm from './../components/CalendarForm/CalendarForm';
 import CalendarApi from './../providers/CalendarAPI';
 
