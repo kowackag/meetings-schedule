@@ -5,7 +5,6 @@ import { useDispatch } from 'react-redux';
 import {setEditableAction} from './../../actions/calendar'
 
 const CalendarItem = ({meetings, removeMeeting, edit}) => {
-    console.log(edit)
     const dispatch = useDispatch();
     const now = new Date().getTime();
     const removeItem = (e) => {
