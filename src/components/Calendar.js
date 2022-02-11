@@ -1,59 +1,45 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import {loadMeetingsAction, saveMeetingsAction} from './../actions/calendar'
+import React, {useEffect} from 'react';
+import {loadMeetingsAction, saveMeetingsAction, removeMeetingsAction} from './../actions/calendar'
 import CalendarList from './../components/CalendarList/CalendarList'
 import CalendarForm from './../components/CalendarForm/CalendarForm';
 import CalendarApi from './../providers/CalendarAPI';
+import {useDispatch } from 'react-redux';
 
-const meetings =  new CalendarApi();
+const db =  new CalendarApi();
+const [loadMeetingsFromApi, sendMeetingToApi, removeMeetingFromApi]= db;
 
-class Calendar extends React.Component {
-    
-    sendMeetingToApi = (meetingData) => {
-        
-        
-        const [loadMeetingsFromApi, sendMeetingToApi]= meetings;
+const Calendar = () => {
+    const dispatch = useDispatch();
+    const sendMeeting = (meetingData) => {
         sendMeetingToApi(meetingData)
-            .then(resp=>this.addMeetingToState(resp))
+            .then(resp=>dispatch(saveMeetingsAction(resp)))
             .catch(err => {
                 console.error(err);
             });
     }
 
-    addMeetingToState(meetingData) {
-        this.props.onSave(meetingData);
+    const removeMeeting = (id) => {
+        removeMeetingFromApi(id)
+            .then(()=>dispatch(removeMeetingsAction(id)))
+            .catch(err => {
+                console.error(err);
+            });
     }
 
-    componentDidMount() {
-        const [loadMeetingsFromApi, sendMeetingToApi]= meetings;
+    useEffect(() => 
         loadMeetingsFromApi()
-            .then(resp => {
-                this.props.onLoad(resp);
-            })
+            .then(resp => dispatch(loadMeetingsAction(resp)))
             .catch(err => {
                 console.error(err);
-            });
-    }
-    
-    render() {
-        return (
-            <section>
-                <CalendarList meetings={this.props.meetings}/>
-                <CalendarForm saveMeetings={this.sendMeetingToApi}/>
-            </section>
-        )
-    }
+            }),[]
+    )
+
+    return (
+        <section>
+            <CalendarList removeMeeting={removeMeeting}/>
+            <CalendarForm saveMeetings={sendMeeting}/>
+        </section>
+    )
 }
 
-const mapStateToProps = (state, props) => {
-    return {
-        meetings: state.meetings,
-    }
-}
-
-const mapActionToProps = {
-    onSave: saveMeetingsAction,
-    onLoad: loadMeetingsAction,
-}
-
-export default connect(mapStateToProps, mapActionToProps)(Calendar);
+export default Calendar;

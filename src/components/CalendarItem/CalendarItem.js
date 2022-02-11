@@ -2,12 +2,12 @@ import React from'react';
 import Button from './../Button/Button';
 import StyledCalendarItem from './CalendarItem.styled';
 
-const CalendarItem = ({meetings}) => {
+const CalendarItem = ({meetings, removeMeeting}) => {
     const now = new Date().getTime();
     const removeItem = (e) => {
         e.preventDefault();
-        
-        console.log(e.target.dataset.index)
+        const ind = e.target.dataset.index;
+        removeMeeting(ind);
     }
 
     return(

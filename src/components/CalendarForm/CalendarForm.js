@@ -16,10 +16,16 @@ const CalendarForm = (props) => {
         errors: [],
     }
     const [state, setState] = useState(initState);
+    
+    const saveMeeting = () => {
+        const {saveMeetings} = props;
+        if(typeof saveMeetings === 'function') {
+            saveMeetings( getFieldsData() );
+        }
+    }
 
     const handleSubmit = e => {
         e.preventDefault();
-
         const errors = validateForm(state);
         setState({...state,
             errors
@@ -34,13 +40,11 @@ const CalendarForm = (props) => {
     const getFieldsData = () => {
         const fieldsData = Object.assign({}, state);
         delete fieldsData['errors'];
-
         return fieldsData;
     }
 
     const isFieldNameCorrect = (name) => {
         const fieldsData = getFieldsData();
-
         return typeof fieldsData[name] !== 'undefined';
     }
 
@@ -53,19 +57,11 @@ const CalendarForm = (props) => {
         }
     }
 
-    const saveMeeting = () => {
-        const {saveMeetings} = props;
-        if(typeof saveMeetings === 'function') {
-            saveMeetings( getFieldsData() );
-        }
-    }
-
     const clearFormFields = () => {
         const fieldsData = getFieldsData();
         for(const prop in fieldsData) {
             fieldsData[prop] = '';
         }
-
         setState(fieldsData);
     }
 
@@ -100,9 +96,7 @@ const CalendarForm = (props) => {
             </div>
             <div className="errors"><ul>{ renderErrors()}</ul></div> 
         </StyledCalendarForm>
-        )
-
-    
+        )  
 }
 
 export default CalendarForm;

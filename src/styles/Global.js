@@ -1,4 +1,10 @@
 import {createGlobalStyle} from 'styled-components';
+import robotoRegularWoff from "./../fonts/roboto-regular-webfont.woff";
+import robotoRegularWoff2 from "./../fonts/roboto-regular-webfont.woff2";
+import robotoBoldWoff from "./../fonts/roboto-bold-webfont.woff";
+import robotoBoldWoff2 from "./../fonts/roboto-bold-webfont.woff2";
+import robotoItalicWoff2 from "./../fonts/roboto-italic-webfont.woff2";
+import robotoItalicWoff from "./../fonts/roboto-italic-webfont.woff";
 
 const GlobalStyle = createGlobalStyle`
     --color-font: ${props=>props.theme.colorFont};
@@ -7,23 +13,23 @@ const GlobalStyle = createGlobalStyle`
         font-style: regular;
         font-weight: 400;
         src:
-        url("./src/fonts/roboto-regular-webfont.woff2") format('woff2'),
-        url('./src/fonts/roboto-regular-webfont.woff') format('woff');
+        url(${robotoRegularWoff2}) format('woff2'),
+        url(${robotoRegularWoff}) format('woff');
     }
     @font-face {
         font-family: "Roboto";
         font-weight: 700;
         src:
-        url('./src/fonts/roboto-bold-webfont.woff2') format('woff2'),
-        url('./src/fonts/roboto-bold-webfont.woff') format('woff');
+        url(${robotoBoldWoff2}) format('woff2'),
+        url(${robotoBoldWoff}) format('woff');
     }
     @font-face {
         font-family: "Roboto";
         font-style: italic;
         font-weight: 400;
         src:
-        url('./src/fonts/roboto-italic-webfont.woff2') format('woff2'),
-        url('./src/fonts/roboto-italic-webfont.woff') format('woff');
+        url(${robotoItalicWoff2}) format('woff2'),
+        url(${robotoItalicWoff}) format('woff');
     }
     html {
         font-size: 10px;

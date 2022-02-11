@@ -1,4 +1,3 @@
-import {v4 as uuid} from 'uuid'
 
 const loadMeetingsAction = payload => {
     return {
@@ -14,12 +13,14 @@ const saveMeetingsAction = payload => {
     }
 }
 
-export {saveMeetingsAction, loadMeetingsAction}
-// export const removeMeetingsAction = payload => {
-//     return {
-//         type: 'removeMeet',
-//         payload: {
-//             payload
-//         },
-//     }
-// }
+const removeMeetingsAction = id => {
+    return {
+        type: 'removeMeet',
+        payload:{
+            id: id
+        }
+    }
+}
+
+export {saveMeetingsAction, loadMeetingsAction, removeMeetingsAction}
+

@@ -11,8 +11,9 @@ const DefaultStyledCalendarForm = styled.form`
     }
 
     & .errors {
-        padding: 4rem 0;
+        padding: 6rem 0;
         width:40%;
+        font-size: 1.4rem;
         font-style: italic;
         color: #eb0b0b;
         & li {
