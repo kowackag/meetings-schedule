@@ -4,7 +4,8 @@ import StyledCalendarItem from './CalendarItem.styled';
 import { useDispatch } from 'react-redux';
 import {setEditableAction} from './../../actions/calendar'
 
-const CalendarItem = ({meetings, removeMeeting}) => {
+const CalendarItem = ({meetings, removeMeeting, edit}) => {
+    console.log(edit)
     const dispatch = useDispatch();
     const now = new Date().getTime();
     const removeItem = (e) => {
@@ -21,7 +22,7 @@ const CalendarItem = ({meetings, removeMeeting}) => {
 
     return(
         meetings.map(({id, date, email, time, firstName, lastName})=><StyledCalendarItem  underline={Date.parse(date+ " " + time)-now < 86400000 && Date.parse(date+ " " + time) > now ? 1 : null} key={id}> {date} godz.: {time}<a className ="link" href={`mailto: ${email}`}>{firstName} {lastName}</a> 
-        <div><Button index={id} onClick={editItem}>zmień</Button>
+        <div>{edit && <Button index={id} onClick={editItem}>zmień</Button>}
         <Button index={id} onClick={removeItem}>X</Button></div></StyledCalendarItem>)
     )
 }

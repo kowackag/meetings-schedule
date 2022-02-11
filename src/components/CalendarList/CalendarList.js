@@ -13,7 +13,7 @@ const CalendarList = ({removeMeeting}) => {
         <StyledCalendarList>
             <section className="calendar-planned"> 
                 <h3 className="calendar-subtitle">Zaplanowane:</h3> 
-                <ul><CalendarItem meetings={plannedMeetings} removeMeeting={removeMeeting}/></ul>
+                <ul><CalendarItem meetings={plannedMeetings} edit={true} removeMeeting={removeMeeting}/></ul>
             </section>
             <section className="calendar-past"> 
                 <h3 className="calendar-subtitle">Zrealizowane:</h3>
