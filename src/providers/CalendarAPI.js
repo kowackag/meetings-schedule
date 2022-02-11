@@ -1,10 +1,9 @@
-import React from 'react';
+const CalendarAPI  = () => {
 
-class Calendar extends React.Component {
-    apiUrl = 'http://localhost:3005/meetings';
+    const apiUrl = 'http://localhost:3005/meetings';
 
-    loadMeetingsFromApi() {
-      return fetch(this.apiUrl)
+    const loadMeetingsFromApi = () => {
+      return fetch(apiUrl)
         .then(resp => {
             if (resp.ok) {
                 return resp.json();
@@ -13,8 +12,8 @@ class Calendar extends React.Component {
         })  
     }
 
-    sendMeetingToApi (meetingData) {
-       return fetch(this.apiUrl, {
+    const sendMeetingToApi = (meetingData) => {
+       return fetch(apiUrl, {
             method: 'POST',
             body: JSON.stringify(meetingData),
             headers: {
@@ -29,6 +28,7 @@ class Calendar extends React.Component {
                 throw new Error('Network error!');
             })
     }
+    return [loadMeetingsFromApi, sendMeetingToApi];
 }
 
-export default Calendar;
+export default CalendarAPI;

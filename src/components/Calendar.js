@@ -10,7 +10,10 @@ const meetings =  new CalendarApi();
 class Calendar extends React.Component {
     
     sendMeetingToApi = (meetingData) => {
-        meetings.sendMeetingToApi(meetingData)
+        
+        
+        const [loadMeetingsFromApi, sendMeetingToApi]= meetings;
+        sendMeetingToApi(meetingData)
             .then(resp=>this.addMeetingToState(resp))
             .catch(err => {
                 console.error(err);
@@ -22,7 +25,8 @@ class Calendar extends React.Component {
     }
 
     componentDidMount() {
-        meetings.loadMeetingsFromApi()
+        const [loadMeetingsFromApi, sendMeetingToApi]= meetings;
+        loadMeetingsFromApi()
             .then(resp => {
                 this.props.onLoad(resp);
             })
