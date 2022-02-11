@@ -1,12 +1,12 @@
 import React, {useEffect} from 'react';
-import {loadMeetingsAction, saveMeetingsAction, removeMeetingsAction} from './../actions/calendar'
+import {loadMeetingsAction, saveMeetingsAction, removeMeetingsAction, updateMeetingAction} from './../actions/calendar'
 import CalendarList from './../components/CalendarList/CalendarList'
 import CalendarForm from './../components/CalendarForm/CalendarForm';
 import CalendarApi from './../providers/CalendarAPI';
 import {useDispatch } from 'react-redux';
 
 const db =  new CalendarApi();
-const [loadMeetingsFromApi, sendMeetingToApi, removeMeetingFromApi]= db;
+const [loadMeetingsFromApi, sendMeetingToApi, removeMeetingFromApi, updateMeetingInApi]= db;
 
 const Calendar = () => {
     const dispatch = useDispatch();
@@ -26,6 +26,14 @@ const Calendar = () => {
             });
     }
 
+    const updateMeeting = (id, meetingData) => {
+        updateMeetingInApi(id, meetingData)
+            .then(resp=>dispatch(updateMeetingAction(id, resp)))
+            .catch(err => {
+                console.error(err);
+            });
+    }
+
     useEffect(() => 
         loadMeetingsFromApi()
             .then(resp => dispatch(loadMeetingsAction(resp)))
@@ -37,7 +45,7 @@ const Calendar = () => {
     return (
         <section>
             <CalendarList removeMeeting={removeMeeting}/>
-            <CalendarForm saveMeetings={sendMeeting}/>
+            <CalendarForm saveMeetings={sendMeeting} updateMeeting={updateMeeting}/>
         </section>
     )
 }

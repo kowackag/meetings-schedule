@@ -5,9 +5,11 @@ import Input from './../Input/Input';
 import Submit from '../Submit/Submit';
 import {useState} from 'react';
 import validateForm from '../validateForm';
+import { useSelector, useDispatch } from 'react-redux';
+import {setEditableAction} from './../../actions/calendar';
 
 const CalendarForm = (props) => {
-      const initState = {
+    const initState = {
         firstName: '',
         lastName: '',
         email: '',
@@ -15,12 +17,43 @@ const CalendarForm = (props) => {
         time: '',
         errors: [],
     }
+
     const [state, setState] = useState(initState);
-    
+    const [isEditing, setIsEditing] = useState(false);
+
+    //  -------------- editMeeting --------------
+
+    const editable = useSelector(props=>props.editable);
+    const meetings = useSelector(props=>props.meetings);
+    const editingMeetings = meetings.find(item=>item.id == editable);
+    const dispatch = useDispatch();
+    const setEditionFormFields = () => {
+        const state = {
+            firstName: editingMeetings.firstName,
+            lastName: editingMeetings.lastName,
+            email: editingMeetings.email,
+            date: editingMeetings.date,
+            time: editingMeetings.time,
+            errors: [], 
+            id: editingMeetings.id
+        }
+        const fieldsData = Object.assign({}, state);
+        delete fieldsData['errors'];
+        setState(fieldsData);
+        dispatch(setEditableAction(0));
+    }
+
+    if (editable !==0) {
+        setIsEditing(!isEditing);
+        setEditionFormFields();
+    }
+
+    // ---------------------------------------
+
     const saveMeeting = () => {
-        const {saveMeetings} = props;
+        const {saveMeetings, updateMeeting} = props;
         if(typeof saveMeetings === 'function') {
-            saveMeetings( getFieldsData() );
+            if (state.id) {setIsEditing(!isEditing); updateMeeting(state.id, getFieldsData() )} else {saveMeetings( getFieldsData() ); }  
         }
     }
 
@@ -69,7 +102,6 @@ const CalendarForm = (props) => {
         if (state.errors) {
             return state.errors.map( (err, index) => <li key={ index }>{ err }</li>);
         }
-        
     }
     
     const fields = [
@@ -81,7 +113,7 @@ const CalendarForm = (props) => {
     ]
 
     return (
-        <StyledCalendarForm action="" onSubmit={ handleSubmit }>
+        <StyledCalendarForm onSubmit={ handleSubmit } isEditing={isEditing}>
             <div className="form">
                 {fields.map(({name, value, onChange, placeholder, desc}) => <div key ={name}>
                     <Label>{desc} <Input 
@@ -92,7 +124,7 @@ const CalendarForm = (props) => {
                                 placeholder={placeholder}/>
                     </Label>
                 </div>)}
-                <div><Submit type="submit" value="Dodaj spotkanie" /></div>
+                <div><Submit type="submit" value="Zapisz" /></div>
             </div>
             <div className="errors"><ul>{ renderErrors()}</ul></div> 
         </StyledCalendarForm>

@@ -42,7 +42,23 @@ const CalendarAPI  = () => {
              })
     }
 
-    return [loadMeetingsFromApi, sendMeetingToApi, removeMeetingFromApi];
+    const updateMeetingInApi = (id, data) => {
+        return fetch(apiUrl+`/${id}`, {
+             method: 'PUT',
+             body: JSON.stringify(data),
+             headers: {
+                'Content-Type': 'application/json'}
+         })
+             .then(resp => {
+                 if(resp.ok) {
+                     return resp.json()
+                 }
+                 
+                 throw new Error('Network error!');
+             })
+    }
+
+    return [loadMeetingsFromApi, sendMeetingToApi, removeMeetingFromApi, updateMeetingInApi];
 }
 
 export default CalendarAPI;

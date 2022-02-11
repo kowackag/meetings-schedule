@@ -22,5 +22,25 @@ const removeMeetingsAction = id => {
     }
 }
 
-export {saveMeetingsAction, loadMeetingsAction, removeMeetingsAction}
+const updateMeetingAction = (id,data) => {
+    return {
+        type: 'updateMeet',
+        payload:{
+            id: id,
+            data: data
+        }
+    }
+}
+
+const setEditableAction = (id) => {
+    return {
+        type: 'setEdit',
+        payload:{
+            id: id
+        }
+    }
+}
+
+
+export {saveMeetingsAction, loadMeetingsAction, removeMeetingsAction, updateMeetingAction, setEditableAction}
 

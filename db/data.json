@@ -12,14 +12,6 @@
       "firstName": "Marianna",
       "lastName": "Kowacka-Gajda",
       "email": "gosia_kow@gazeta.pl",
-      "date": "2099-05-14",
-      "time": "01:01",
-      "id": 20
-    },
-    {
-      "firstName": "Marianna",
-      "lastName": "Kowacka-Gajda",
-      "email": "gosia_kow@gazeta.pl",
       "date": "2022-02-10",
       "time": "12:20",
       "id": 21
@@ -58,14 +50,6 @@
     },
     {
       "firstName": "Marianna",
-      "lastName": "Kowacka-Gajda",
-      "email": "gosia_kow@gazeta.pl",
-      "date": "2022-02-12",
-      "time": "19:20",
-      "id": 33
-    },
-    {
-      "firstName": "Marianna",
       "lastName": "Kowacka",
       "email": "kowackag@gmail.com",
       "date": "2022-02-14",
@@ -90,7 +74,7 @@
     },
     {
       "firstName": "Magda",
-      "lastName": "Syr",
+      "lastName": "Syry",
       "email": "kowackag@gmail.com",
       "date": "2022-02-13",
       "time": "21:00",
@@ -159,6 +143,30 @@
       "date": "2022-02-12",
       "time": "01:01",
       "id": 47
+    },
+    {
+      "firstName": "Magda",
+      "lastName": "Syry",
+      "email": "kowackag@gmail.com",
+      "date": "2022-02-22",
+      "time": "21:00",
+      "id": 48
+    },
+    {
+      "firstName": "Marta",
+      "lastName": "Rozpara",
+      "email": "kowackag@gmail.com",
+      "date": "2022-02-12",
+      "time": "01:01",
+      "id": 49
+    },
+    {
+      "firstName": "Marta",
+      "lastName": "Rozpara",
+      "email": "kowackag@gmail.com",
+      "date": "2022-02-12",
+      "time": "01:01",
+      "id": 50
     }
   ]
 }
