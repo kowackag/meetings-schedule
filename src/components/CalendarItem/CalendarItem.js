@@ -2,11 +2,11 @@ import React from'react';
 import Button from './../Button/Button';
 import StyledCalendarItem from './CalendarItem.styled';
 import { useDispatch } from 'react-redux';
-import {setEditableAction} from './../../actions/calendar'
+import {setEditableAction} from './../../actions/calendar';
+import {isOngoing} from './../../helpers';
 
 const CalendarItem = ({meetings, removeMeeting, edit}) => {
     const dispatch = useDispatch();
-    const now = new Date().getTime();
     const removeItem = (e) => {
         e.preventDefault();
         const ind = e.target.dataset.index;
@@ -20,9 +20,14 @@ const CalendarItem = ({meetings, removeMeeting, edit}) => {
     }
 
     return(
-        meetings.map(({id, date, email, time, firstName, lastName})=><StyledCalendarItem  underline={Date.parse(date+ " " + time)-now < 86400000 && Date.parse(date+ " " + time) > now ? 1 : null} key={id}> {date} godz.: {time}<a className ="link" href={`mailto: ${email}`}>{firstName} {lastName}</a> 
-        <div>{edit && <Button index={id} onClick={editItem}>zmień</Button>}
-        <Button index={id} onClick={removeItem}>X</Button></div></StyledCalendarItem>)
+        meetings.map(({id, date, email, time, firstName, lastName})=>
+            <StyledCalendarItem  underline={isOngoing(date,time)} key={id}> {date} godz.: {time}
+                <a className ="link" href={`mailto: ${email}`}>{firstName} {lastName}</a> 
+                <div>{edit && 
+                    <Button index={id} onClick={editItem}>zmień</Button>}
+                    <Button index={id} onClick={removeItem}>X</Button>
+                </div>
+            </StyledCalendarItem>)
     )
 }
 
