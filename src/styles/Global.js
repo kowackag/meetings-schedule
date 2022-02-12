@@ -8,6 +8,10 @@ import robotoItalicWoff from "./../fonts/roboto-italic-webfont.woff";
 
 const GlobalStyle = createGlobalStyle`
     --color-font: ${props=>props.theme.colorFont};
+    --color-alfa: ${props=>props.theme.colorBgc};
+    --color-beta: ${props=>props.theme.colorShadowDark};
+    --color-gamma: ${props=>props.theme.colorShadowLight};
+    --color-contrast:${props=>props.theme.colorContrast};
     @font-face {
         font-family: "Roboto";
         font-style: regular;

@@ -1,10 +1,6 @@
 import styled from "styled-components";
 
 const DefaultStyledCalendarList = styled.form`
-    --color-alfa: ${props=>props.theme.colorBgc};
-    --color-beta: ${props=>props.theme.colorShadowDark};
-    --color-gamma: ${props=>props.theme.colorShadowLight};
-    --color-font: ${props=>props.theme.colorFont};
     display: flex;
     justify-content: space-between;
     padding: 0.5rem 1rem;

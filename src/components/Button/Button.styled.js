@@ -1,11 +1,6 @@
 import styled from 'styled-components';
 
 const DefaultStyledButton = styled.button`
-    --color-alfa: ${props=>props.theme.colorBgc};
-    --color-beta: ${props=>props.theme.colorShadowDark};
-    --color-gamma: ${props=>props.theme.colorShadowLight};
-    --color-font: ${props=>props.theme.colorFont};
-   
     display: inline-block;
     padding: 0.3rem 0.6rem;
     border: 1px solid rgba(var(--color-beta), 0.5);

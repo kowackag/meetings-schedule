@@ -4,6 +4,6 @@ export default {
     colorShadowDark: '200,215,240',
     colorShadowLight: '247, 247, 250',
     colorFont: '4, 21, 98',
-    colorContrast:'220, 21, 133'
+    colorContrast:'199, 0, 57'
 }
 

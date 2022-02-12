@@ -1,7 +1,6 @@
 import styled, {css} from 'styled-components';
 
 const DefaultStyledCalendarItem = styled.li`
-    --color-contrast:${props=>props.theme.colorContrast};
     display: flex;
     justify-content: space-between;
     list-style: none;

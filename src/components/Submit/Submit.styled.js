@@ -1,11 +1,6 @@
 import styled from 'styled-components';
 
 const DefaultStyledSubmit = styled.input`
-    --color-alfa: ${props=>props.theme.colorBgc};
-    --color-beta: ${props=>props.theme.colorShadowDark};
-    --color-gamma: ${props=>props.theme.colorShadowLight};
-    --color-font: ${props=>props.theme.colorFont};
-   
     display: block;
     padding: 1rem 2rem;
     min-width: 120px;

@@ -1,14 +1,6 @@
 {
   "meetings": [
     {
-      "id": 1,
-      "firstName": "Jan",
-      "lastName": "Kowalski",
-      "email": "jan@kowalski.pl",
-      "date": "2022-01-01",
-      "time": "10:00"
-    },
-    {
       "firstName": "Marianna",
       "lastName": "Kowacka-Gajda",
       "email": "gosia_kow@gazeta.pl",
@@ -161,12 +153,12 @@
       "id": 49
     },
     {
-      "firstName": "Marta",
-      "lastName": "Rozpara",
-      "email": "kowackag@gmail.com",
+      "firstName": "Jak",
+      "lastName": "Nowak",
+      "email": "Nowak@op.pol",
       "date": "2022-02-12",
-      "time": "01:01",
-      "id": 50
+      "time": "21:00",
+      "id": 51
     }
   ]
 }
