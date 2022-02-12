@@ -11,7 +11,13 @@ const meetingReducer = ((state = initState, action) => {
             return {...state, meetings: [...state.meetings, action.payload]};
         case 'updateMeet':
             return {...state, 
-                meetings: [...state.meetings.map(item=> item.id === Number(action.payload.id) ? action.payload.data : item)]};  
+                meetings: [...state.meetings.map(item=> {
+                    if (item.id === Number(action.payload.id)) {
+                       return action.payload.data;
+                    } else {
+                       return item;
+                    }})]
+                }
         case 'removeMeet':
             return {...state, 
                 meetings: state.meetings.filter(item=> item.id !== Number(action.payload.id))};     

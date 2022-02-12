@@ -9,14 +9,6 @@
       "id": 21
     },
     {
-      "firstName": "Marta",
-      "lastName": "Rozpara",
-      "email": "gosia_kow@gazeta.pl",
-      "date": "2022-02-11",
-      "time": "01:01",
-      "id": 23
-    },
-    {
       "firstName": "Małgorzata",
       "lastName": "Kowacka",
       "email": "kowackamarianna@gmail.com",
@@ -66,7 +58,7 @@
     },
     {
       "firstName": "Magda",
-      "lastName": "Syry",
+      "lastName": "Syr",
       "email": "kowackag@gmail.com",
       "date": "2022-02-13",
       "time": "21:00",
@@ -154,7 +146,7 @@
     },
     {
       "firstName": "Jak",
-      "lastName": "Nowak",
+      "lastName": "Nowacki",
       "email": "Nowak@op.pol",
       "date": "2022-02-12",
       "time": "21:00",
