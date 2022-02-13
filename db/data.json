@@ -23,7 +23,7 @@
       "date": "2022-02-11",
       "time": "12:20",
       "id": 30
-    },  
+    },
     {
       "firstName": "Marta",
       "lastName": "Rozpara",
@@ -33,7 +33,7 @@
       "id": 32
     },
     {
-      "firstName": "Marianna",
+      "firstName": "Maria",
       "lastName": "Kowacka",
       "email": "kowackag@gmail.com",
       "date": "2022-02-14",
@@ -127,6 +127,14 @@
       "date": "2099-05-31",
       "time": "21:00",
       "id": 52
+    },
+    {
+      "firstName": "Artur",
+      "lastName": "Brdynkiewicz",
+      "email": "mariakg@poczta.fm",
+      "date": "2022-02-15",
+      "time": "16:00",
+      "id": 53
     }
   ]
 }

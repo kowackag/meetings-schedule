@@ -7,6 +7,7 @@ import {useState} from 'react';
 import validateForm from '../validateForm';
 import { useSelector, useDispatch } from 'react-redux';
 import {setEditableAction} from './../../actions/calendar';
+import Errors from './../Errors/Errors';
 
 const CalendarForm = (props) => {
     const initState = {
@@ -25,20 +26,10 @@ const CalendarForm = (props) => {
 
     const editable = useSelector(props=>props.editable);
     const meetings = useSelector(props=>props.meetings);
-    const editingMeetings = meetings.find(item=>item.id == editable);
+    const editingMeetings = meetings.find(item=>item.id === editable);
     const dispatch = useDispatch();
     const setEditionFormFields = () => {
-        const state = {
-            firstName: editingMeetings.firstName,
-            lastName: editingMeetings.lastName,
-            email: editingMeetings.email,
-            date: editingMeetings.date,
-            time: editingMeetings.time,
-            errors: [], 
-            id: editingMeetings.id
-        }
-        const fieldsData = Object.assign({}, state);
-        delete fieldsData['errors'];
+        const fieldsData = Object.assign({}, editingMeetings);
         setState(fieldsData);
         dispatch(setEditableAction(0));
     }
@@ -99,9 +90,7 @@ const CalendarForm = (props) => {
     }
 
     const renderErrors = () => {
-        if (state.errors) {
-            return state.errors.map( (err, index) => <li key={ index }>{ err }</li>);
-        }
+        return state.errors.map( (err, index) => <li key={ index }>{ err }</li>);
     }
     
     const fields = [
@@ -126,7 +115,7 @@ const CalendarForm = (props) => {
                 </div>)}
                 <div><Submit type="submit" value="Zapisz" /></div>
             </div>
-            <div className="errors"><ul>{ renderErrors()}</ul></div> 
+            {state.errors && <Errors errors ={state.errors}></Errors> }
         </StyledCalendarForm>
         )  
 }
