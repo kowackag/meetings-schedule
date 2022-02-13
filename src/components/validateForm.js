@@ -29,7 +29,7 @@ const validateForm = ({date, time, firstName, lastName, email}) => {
     }
 
     if(!isTimeCorrect()) {
-        errors.push('Popraw wprowadzoną godiznę')
+        errors.push('Popraw wprowadzoną godzinę')
     }
 
     if(!isFirstNameCorrect()) {

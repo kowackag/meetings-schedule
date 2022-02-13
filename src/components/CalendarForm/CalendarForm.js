@@ -21,30 +21,28 @@ const CalendarForm = (props) => {
 
     const [state, setState] = useState(initState);
     const [isEditing, setIsEditing] = useState(false);
-
-    //  -------------- editMeeting --------------
-
     const editable = useSelector(props=>props.editable);
     const meetings = useSelector(props=>props.meetings);
+
     const editingMeetings = meetings.find(item=>item.id === editable);
     const dispatch = useDispatch();
     const setEditionFormFields = () => {
-        const fieldsData = Object.assign({}, editingMeetings);
-        setState(fieldsData);
+        setIsEditing(true);
+        setState(editingMeetings);
         dispatch(setEditableAction(0));
     }
 
-    if (editable !==0) {
-        setIsEditing(!isEditing);
-        setEditionFormFields();
-    }
-
-    // ---------------------------------------
+    if (editable !==0) setEditionFormFields();
 
     const saveMeeting = () => {
         const {saveMeetings, updateMeeting} = props;
         if(typeof saveMeetings === 'function') {
-            if (state.id) {setIsEditing(!isEditing); updateMeeting(state.id, getFieldsData() )} else {saveMeetings( getFieldsData() ); }  
+            if (isEditing) {
+                setIsEditing(false); 
+                updateMeeting(state.id, getFieldsData());   
+            } else {
+                saveMeetings(getFieldsData()); 
+            }  
         }
     }
 
@@ -62,7 +60,7 @@ const CalendarForm = (props) => {
     }
 
     const getFieldsData = () => {
-        const fieldsData = Object.assign({}, state);
+        const fieldsData = {...state};
         delete fieldsData['errors'];
         return fieldsData;
     }
@@ -71,6 +69,7 @@ const CalendarForm = (props) => {
         const fieldsData = getFieldsData();
         return typeof fieldsData[name] !== 'undefined';
     }
+
 
     const handleFieldChange = e => {
         e.preventDefault();
@@ -87,10 +86,6 @@ const CalendarForm = (props) => {
             fieldsData[prop] = '';
         }
         setState(fieldsData);
-    }
-
-    const renderErrors = () => {
-        return state.errors.map( (err, index) => <li key={ index }>{ err }</li>);
     }
     
     const fields = [
